@@ -3,15 +3,18 @@
 
 % ----------------------------------------------------------------------
 % QUICK START
-% 1) Edit metadata in settings/custom_commands.tex (title, author, dates).
-% 2) Add/organize chapters inside sections/mainmatter.tex (uses chapters/*.tex).
-% 3) Manage packages and styles in settings/*.tex (modular and easy to tweak).
-% 4) Add references to bibliography/references.bib and cite with \cite{key}.
+% 1) Edit metadata in settings/authors.tex (title, author, dates, supervisors).
+% 2) Add chapters in mainmatter/chapters/ and include them in sections/mainmatter.tex.
+% 3) Add appendices in backmatter/appendix/ and include them in sections/backmatter.tex.
+% 4) Add references to frontmatter/bibliography/references.bib and cite with \cite{key}.
+% 5) Customize styles and packages in the settings/*.tex files.
 % ----------------------------------------------------------------------
 % STRUCTURE MAP
-% - sections/frontmatter.tex  → cover, title page, acknowledgements, abstracts, ToC, lists
-% - sections/mainmatter.tex   → thesis chapters (numbered, Arabic page numbers)
-% - sections/backmatter.tex   → references and appendices (lettered A, B, …)
+% - main.tex                  → This file, the document root.
+% - settings/                 → Packages, layout, typography, commands, and metadata.
+% - sections/frontmatter.tex  → Cover, title page, abstracts, ToC, lists of figures/tables.
+% - sections/mainmatter.tex   → Main thesis chapters (numbered, Arabic page numbers).
+% - sections/backmatter.tex   → Appendices and bibliography.
 % ----------------------------------------------------------------------
 
 % Preamble
@@ -29,9 +32,8 @@
 \input{settings/page_style}      % Header and footer styling
 \input{settings/comands}         % Custom commands and macros
 
-%% Bibliography archieve file
-%\addbibresource{bibliography/references_zotero.bib}
-\addbibresource{frontmatter/bibliography/references_all.bib}
+%% Bibliography file
+\addbibresource{frontmatter/bibliography/references.bib}
 
 %% ======================================================================
 %% DOCUMENT START

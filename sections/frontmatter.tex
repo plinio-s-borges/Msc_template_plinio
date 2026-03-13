@@ -24,7 +24,8 @@
 \addcontentsline{toc}{chapter}{Abstract}
 \input{frontmatter/abstract.tex}
 
-% --- INSPIRATIONAL QUOTE ---
+% --- OPTIONAL: INSPIRATIONAL QUOTE ---
+% You can replace this with your own quote or remove it entirely.
 \chapter*{}
 \setlength\epigraphwidth{14.5cm}
 \setlength\epigraphrule{0pt}
@@ -34,31 +35,24 @@
 \vspace*{\fill}
 \epigraph{%
 \footnotesize\upshape%
-February 14, 1990.\\[\medskipamount]
-Beyond the orbit of Neptune,\\
-after a last encounter with Saturn,\\
-Voyager~1 turned its camera homeward\\
-and captured the whole of Earth\\
-as a single dot, a speck of light.%
-\par\medskip \medskip
-``From this distant vantage point, the Earth might not seem of any particular interest. But for us, it's different. Consider again that dot. That's here. That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives.
-[\ldots] Our planet is a lonely speck in the great enveloping cosmic dark. In our obscurity, in all this vastness, there is no hint that help will come from elsewhere to save us from ourselves. The Earth is the only world known so far to harbor life. There is nowhere else, at least in the near future, to which our species could migrate.
-[\ldots] To me, it underscores our responsibility to deal more kindly with one another, and to preserve and cherish the pale blue dot, the only home we've ever known.''}{Carl Sagan, \textit{Pale Blue Dot} (1994)}
+"The important thing is not to stop questioning. Curiosity has its own reason for existing."
+}{Albert Einstein}
 \vspace*{\fill}
 
 %% --- TABLE OF CONTENTS AND LISTS ---
 \pagestyle{plain}
 \tableofcontents
 
+% --- LIST OF ACRONYMS ---
+% Uncomment the lines below to include a list of acronyms.
+% You must define your acronyms in 'frontmatter/list_acronyms.tex'.
 % \chapter*{List of Acronyms}
-%\addcontentsline{toc}{chapter}{List of Acronyms}
-% \input{list_acronyms}
-
-% Example usage to ensure acronym is defined
-% \ac{DEA}
+% \addcontentsline{toc}{chapter}{List of Acronyms}
+% \input{frontmatter/list_acronyms.tex}
 
 \listoffigures
 \listoftables
+
 
 % ── List of FIXMEs (remove before final submission) ──
 \listoffixmes
