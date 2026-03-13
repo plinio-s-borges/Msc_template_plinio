@@ -1,9 +1,21 @@
 \chapter{Requirements Appendix}\label{app:requirements}
 
 This appendix provides an example of how to use the requirements tracking system. 
-You can define requirements using the `.\\requirement` command or creating an inline requirement with `.\\inlineReq{R-ID}` and reference them in your text using `.\\reqRef{R-ID}` .
+You can define requirements using the `\. requirement` command or creating an inline requirement with `\ inlineReq{R-ID}` and reference them in your text using `\ reqRef{R-ID}`.
+Once requirements are defined, you can reference them from anywhere in your document. This is useful for tracing how the system's design and implementation satisfy the initial requirements.
 
-The `.\\requirement` command has the following structure:
+example:
+
+\begin{enumerate}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}\setlength{\parsep}{0pt}
+\item \textbf{Diagnosis of fire-resilience states \inlineReq{R1}}\footnote{[\rightarrow R\#] refers to the requirement number \# being created at this point. Full description of the requirment is found in the end of each chapter, i.e \S \ref{sec:requirements_level1}.The requirements framework adopted in this work is detailed in Appendix~\ref{app:se_approach} and \S\ref{sec:requirements_level1}.}
+\item \textbf{Anticipation of ignitions \inlineReq{R2}}
+\item \textbf{Near--real-time identification of hotspots \inlineReq{R3}}
+\item \textbf{Near--real-time monitoring of fire-front evolution \inlineReq{R4}}
+\item \textbf{All weather, cloud/smoke-penetrating, day/night capability \inlineReq{R5}}
+\end{enumerate}
+
+
+% The descripiton of the `.\\requirement` command has the following structure:
 % \requirement{<ID>}{<Title>}{<Description>}{<Type>}{<Tags>}
 % - <ID>: A unique identifier for the requirement (e.g., R-01).
 % - <Title>: A short, descriptive title.
@@ -11,30 +23,18 @@ The `.\\requirement` command has the following structure:
 % - <Type>: The category of the requirement (e.g., Functional, Non-Functional, Performance, Security).
 % - <Tags>: Comma-separated tags for filtering or grouping (e.g., UI, Database, API).
 
-\section{Example System Requirements}
+\section{Example: Mission Objectives (Chapter 1)}\label{sec:app_req_ch1}
+\subsection{Mission Earth Observation Products}
 
-% Example of a Non-Functional, Performance requirement tagged with 'UI'
-\requirement{R-01}{System Performance}{The system shall respond to user input within 2 seconds.}{Performance}{UI}
+The following requirements define the primary Earth Observation inputs and products necessary to support wildfire resilience and monitoring objectives.
 
-% Example of a Functional requirement tagged with 'Database'
-\requirement{R-02}{Data Storage}{The system shall store up to 1 TB of user data.}{Functional}{Database}
+\requirement{R1}{Fire Resilience Inputs}{Provide EO measurement products sufficient for external wildfire-resilience indices; e.g., vegetation state \& dynamics, moisture, thermal regime, and structure; cadence and spectral bands: TBD.}{Mission}{EO product}
 
-\section{Example User Requirements}
+\requirement{R2}{Anticipation of ignitions}{Provide sufficient EO capabilities for third-party short-term ignition-risk assessment and forecasts.}{Mission}{EO product}
 
-% Example of a Functional requirement related to Security
-\requirement{R-03}{User Authentication}{Users shall be able to log in using a username and password.}{Functional}{Security}
+\requirement{R3}{Near-real-time identification of hotspots}{Provide capability for third-party near-real-time hotspot detection alerts with geo-referenced location and confidence; minimum detectable size, geolocation accuracy, and alert latency: TBD.}{Mission}{EO product}
 
-% Example of a Functional requirement for the UI
-\requirement{R-04}{Export Data}{Users shall be able to export their data to a CSV file.}{Functional}{UI}
-
-\section{Referencing Requirements}
-
-Once requirements are defined, you can reference them from anywhere in your document. This is useful for tracing how the system's design and implementation satisfy the initial requirements.
-
-\begin{itemize}
-    \item The \textbf{inline requirement} command, `\inlineReq{R-ID}`, is used when a requirement is first introduced or satisfied in the text. For example, the implementation of the user login feature satisfies requirement \inlineReq{R-03}. This creates a back-link from the requirement definition to this point in the text.
-    \item The standard \textbf{requirement reference} command, `\reqRef{R-ID}`, is used for subsequent mentions. For instance, the performance of the system is critical, as noted in \reqRef{R-01}, and the data storage capacity is defined by \reqRef{R-02}. The ability for users to export their data is covered in \reqRef{R-04}.
-\end{itemize}
+\requirement{R4}{Near-real-time monitoring of fire-front evolution}{Provide capability for near-real-time third-party products describing the fire front perimeter and spread rate during overpass; update cadence, geolocation accuracy, and revisit: TBD.}{Mission}{EO product}
 
 
 
