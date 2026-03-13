@@ -1,0 +1,64 @@
+%% ======================================================================
+%% FRONTMATTER
+%% ⚑ Purpose: pre-content (roman page numbers, unnumbered chapters)
+%% ======================================================================
+\sloppy % Prevent overfull lines
+\frontmatter
+
+% --- COVER PAGE ---
+\includepdf[pages={-},pagecommand={}]{images/cover.pdf}
+\newpage\thispagestyle{empty}
+
+%\pagestyle{plain}
+
+% --- TITLE PAGE ---
+\input{frontmatter/title_page.tex}
+
+% --- ACKNOWLEDGMENTS ---
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{frontmatter/acknowledgements_en.tex}
+
+% --- ABSTRACTS ---
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{frontmatter/abstract.tex}
+
+% --- INSPIRATIONAL QUOTE ---
+\chapter*{}
+\setlength\epigraphwidth{14.5cm}
+\setlength\epigraphrule{0pt}
+\makeatletter
+\patchcmd{\epigraph}{\@epitext{#1}}{\itshape\@epitext{#1}}{} {}
+\makeatother
+\vspace*{\fill}
+\epigraph{%
+\footnotesize\upshape%
+February 14, 1990.\\[\medskipamount]
+Beyond the orbit of Neptune,\\
+after a last encounter with Saturn,\\
+Voyager~1 turned its camera homeward\\
+and captured the whole of Earth\\
+as a single dot, a speck of light.%
+\par\medskip \medskip
+``From this distant vantage point, the Earth might not seem of any particular interest. But for us, it's different. Consider again that dot. That's here. That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives.
+[\ldots] Our planet is a lonely speck in the great enveloping cosmic dark. In our obscurity, in all this vastness, there is no hint that help will come from elsewhere to save us from ourselves. The Earth is the only world known so far to harbor life. There is nowhere else, at least in the near future, to which our species could migrate.
+[\ldots] To me, it underscores our responsibility to deal more kindly with one another, and to preserve and cherish the pale blue dot, the only home we've ever known.''}{Carl Sagan, \textit{Pale Blue Dot} (1994)}
+\vspace*{\fill}
+
+%% --- TABLE OF CONTENTS AND LISTS ---
+\pagestyle{plain}
+\tableofcontents
+
+% \chapter*{List of Acronyms}
+%\addcontentsline{toc}{chapter}{List of Acronyms}
+% \input{list_acronyms}
+
+% Example usage to ensure acronym is defined
+% \ac{DEA}
+
+\listoffigures
+\listoftables
+
+% ── List of FIXMEs (remove before final submission) ──
+\listoffixmes

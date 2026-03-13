@@ -1,0 +1,30 @@
+% Chapter title format (Simple Format)
+\titleformat{\chapter}[hang]
+{
+ \sffamily
+ \Huge
+ \bfseries
+}
+{\thechapter}{0.5em}
+{}
+
+% Ensure \part displays as "Part <number>" everywhere (headings, ToC, refs)
+\makeatletter
+\renewcommand{\thepart}{\Roman{part}}
+\makeatother
+% ToC: show "Part I ..." (prefix "Part " before Roman numeral)
+\makeatletter
+\renewcommand*\l@part[2]{%
+  \addpenalty{-\@highpenalty}%
+  \addvspace{2.25em plus 1pt}%
+  \begingroup
+    \setlength\@tempdima{3em}%
+    \parindent \z@ \rightskip \@pnumwidth
+    \parfillskip -\@pnumwidth
+    \leavevmode \large \bfseries
+    \advance\leftskip\@tempdima \hskip -\leftskip
+    \def\numberline##1{}% suppress default number in #1
+    Part \thepart\space #1\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+  \endgroup
+}
+\makeatother

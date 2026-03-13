@@ -1,0 +1,42 @@
+%% ======================================================================
+%% BACKMATTER
+%% ⚑ Purpose: references and appendices (post-content).
+%% ======================================================================
+
+
+% --- Part IV: APPENDICES ---
+% ----------------------------------------
+% The 'appendices' environment (from the appendix package loaded with
+% [toc,page]) automatically inserts a separator page and a ToC entry,
+% and switches chapter numbering to A, B, C, …
+\begin{appendices}
+
+\input{backmatter/appendix/Figures.tex}
+\input{backmatter/appendix/geopotential_model.tex}
+\input{backmatter/appendix/sso_orbit.tex}
+\input{backmatter/appendix/station_keeping.tex}
+\input{backmatter/appendix/constellation_tables.tex}
+\input{backmatter/appendix/requirements.tex}
+\input{backmatter/appendix/systems_engineering_approach.tex}
+
+\end{appendices}
+
+
+%--- BIBLIOGRAPHY ---
+\printbibliography[heading=bibintoc, title={References}]
+
+
+% Reset chapter title format for appendices (display on separate page)
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+
+
+
+%\input{backmatter/appendix/AGIF_portugal_fire_combat_system.tex}
+
+
+% To include an external PDF:
+% \includepdf[pages={-}]{path/to/appendix.pdf}
+%\end{appendix}
+

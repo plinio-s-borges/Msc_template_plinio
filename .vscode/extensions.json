@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "james-yu.latex-workshop",
+        "ban.spellright",
+        "valentjn.vscode-ltex",
+        "tecosaur.latex-utilities",
+        "gruntfuggly.todo-tree",
+        "davidanson.vscode-markdownlint",
+        "ms-vscode.powershell"
+    ]
+}

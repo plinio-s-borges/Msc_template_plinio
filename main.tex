@@ -1,0 +1,46 @@
+% M.Sc. Dissertation Template
+% A work by Plínio Salgado Borges, based on an example by Mário Cristóvão, Gonçalo Martins and José Faria.
+
+% ----------------------------------------------------------------------
+% QUICK START
+% 1) Edit metadata in settings/custom_commands.tex (title, author, dates).
+% 2) Add/organize chapters inside sections/mainmatter.tex (uses chapters/*.tex).
+% 3) Manage packages and styles in settings/*.tex (modular and easy to tweak).
+% 4) Add references to bibliography/references.bib and cite with \cite{key}.
+% ----------------------------------------------------------------------
+% STRUCTURE MAP
+% - sections/frontmatter.tex  → cover, title page, acknowledgements, abstracts, ToC, lists
+% - sections/mainmatter.tex   → thesis chapters (numbered, Arabic page numbers)
+% - sections/backmatter.tex   → references and appendices (lettered A, B, …)
+% ----------------------------------------------------------------------
+
+% Preamble
+\documentclass[a4paper, 11pt]{book}
+
+%% ======================================================================
+%% MODULAR SETTINGS
+%% ======================================================================
+\input{settings/packages}        % All package imports
+\input{settings/layout}          % Page geometry and layout  
+\input{settings/typography}      % Font settings and spacing, and typograhy, symbols
+\input{settings/chapter_format}  % Chapter formatting
+\input{settings/code_style}      % Code listing styles
+\input{settings/authors} % Custom commands and macros (title, names, etc.)
+\input{settings/page_style}      % Header and footer styling
+\input{settings/comands}         % Custom commands and macros
+
+%% Bibliography archieve file
+%\addbibresource{bibliography/references_zotero.bib}
+\addbibresource{frontmatter/bibliography/references_all.bib}
+
+%% ======================================================================
+%% DOCUMENT START
+%% ======================================================================
+\begin{document}
+
+% Load the modular document structure 
+\input{sections/frontmatter}
+\input{sections/mainmatter}
+\input{sections/backmatter}
+
+\end{document}

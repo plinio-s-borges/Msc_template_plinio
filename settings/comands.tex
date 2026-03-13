@@ -1,0 +1,58 @@
+% Simplified requirement command using tcolorbox
+% Usage: \requirement{R-ID}{title}{description}{type}{tags}
+\newcommand{\requirement}[5]{%
+    % Create hyperlink target for the requirement
+    \hypertarget{#1}{}%
+    
+    % Display requirement using tcolorbox
+    \noindent
+    \par
+    \begin{tcolorbox}[
+        enhanced,
+        breakable,
+        rounded corners,
+        frame empty,
+        colback=gray!7,
+        colbacktitle=white,
+        coltitle=black,
+        fonttitle=\bfseries,
+        before skip=3pt,
+        after skip=3pt,
+        title={
+          \hyperlink{source_#1}{\textbf{#1: #2}}
+          \hfill
+          \scriptsize{\textmd{#4 | #5}}
+        },
+        overlay={
+          \draw[gray, line width=1pt]
+              (title.south west) -- (title.south east);
+        }
+      ]
+      #3\par
+    \end{tcolorbox}%
+}
+
+% Inline requirement reference command
+% Usage: \inlineReq{R-ID}
+\newcommand{\inlineReq}[1]{%
+    \hyperlink{#1}{[\rightarrow #1]}%
+    \hypertarget{source_#1}{}
+}
+
+% Inline requirement reference command
+% Usage: \inlineReq{R-ID}
+\newcommand{\reqRef}[1]{%
+    \hyperlink{#1}{[#1]}%
+}
+% ── TODO / Comment commands ──────────────────────────────────────────
+% Annotations now handled by fixme package (see packages.tex).
+% Use: \fxnote{}, \fxwarning{}, \fxerror{}, \fxfatal{}
+% These work inside floats, captions, and any other context.
+
+% Fix for Biblatex IEEE style missing macro
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit*{\addnbthinspace}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}

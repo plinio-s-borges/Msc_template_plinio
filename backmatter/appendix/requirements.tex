@@ -1,0 +1,147 @@
+\chapter{Requirements}\label{app:requirements}
+
+This appendix group the mission requirements for traceability.
+
+
+\section{Mission Objectives (Chapter 1)}\label{sec:app_req_ch1}
+\subsection{Mission Earth Observation Products}
+
+The following requirements define the primary Earth Observation inputs and products necessary to support wildfire resilience and monitoring objectives.
+
+\requirement{R1}{Fire Resilience Inputs}{Provide EO measurement products sufficient for external wildfire-resilience indices; e.g., vegetation state \& dynamics, moisture, thermal regime, and structure; cadence and spectral bands: TBD.}{Mission}{EO product}
+
+\requirement{R2}{Anticipation of ignitions}{Provide sufficient EO capabilities for third-party short-term ignition-risk assessment and forecasts.}{Mission}{EO product}
+
+\requirement{R3}{Near-real-time identification of hotspots}{Provide capability for third-party near-real-time hotspot detection alerts with geo-referenced location and confidence; minimum detectable size, geolocation accuracy, and alert latency: TBD.}{Mission}{EO product}
+
+\requirement{R4}{Near-real-time monitoring of fire-front evolution}{Provide capability for near-real-time third-party products describing the fire front perimeter and spread rate during overpass; update cadence, geolocation accuracy, and revisit: TBD.}{Mission}{EO product}
+
+
+\subsection{Mission Environmental \& Instruments Constraints}\label{subsec:app_req_constraints}
+
+The following requirements specify the environmental operational conditions and the regional coverage scope for the proposed constellation.
+
+\requirement{R5}{All-weather, cloud/smoke, and day/night observation}{Provide capability to acquire EO measurements supporting requirements R1-R4 under all-weather conditions (including cloud cover, smoke, and darkness) to maintain continuity of observations; modality and performance thresholds: TBD.}{Mission}{observation windows coverage}
+
+\requirement{R6}{Portugal Regional Coverage Constellation }{Provide a satellite constellation delivering regional coverage over the Iberian Peninsula region of continental Portugal to demonstrate EO mission capabilities of requirements (R1-R5)}{Mission}{orbit:spatial coverage}
+
+\requirement{R7}{Constellation temporal resolution}{The constellation shall provide a temporal resolution (time between successive observations of the same ground location by any spacecraft) $\mathbf{{t_{revisit} ≤ 30}}$ minutes across the defined Areas of Interest (AOIs) during the fire season}{Performance}{orbit:temporal coverage, revisit}
+
+\requirement{R8}{Imaging spatial resolution (GSD)}{The imaging payload shall achieve spatial resolution or  Ground Sample Distance $\mathbf{{GSD \approx 6 \text{ \textbf{m/pixel}}}}$  at operational imaging geometry (nadir or off-nadir within allowed pointing limits) across AOIs.}{Performance}{payload:imagery}
+
+
+\section{Study Case Requirements (Chapter 2)}\label{sec:app_req_ch2}
+
+
+\subsection{Core Study Domain Requirements}\label{subsec:app_req_core_domain}
+
+The following requirements establish the spatial and temporal boundaries for the core study domain, centered on Mainland Portugal.
+
+\requirement{R9}{Manifold and Reference Frames}{The mission simulation shall operate within a space-time manifold $\mathcal{M} = \mathbb{E}^3 \times \mathcal{T}$, with origin at Earth's center of mass. Orbital propagation shall use the J2000 inertial frame ($\mathcal{F}_{J2000}$); ground targets shall be defined in the WGS84 Earth-fixed frame ($\mathcal{F}_{\oplus}$, ECEF). Time shall be referenced to UTC. This formalism enables interface with simulation tools supporting higher-fidelity gravity models.}{Mission}{reference-frames}
+
+\requirement{R10}{Core Study Domain Definition}{The Core Study Domain $\mathcal{D}_{core}$ shall be defined as the subset of $\mathcal{M}$ constrained by the geographical boundaries of Mainland Portugal and the temporal bounds of its fire season. Formally: $\mathcal{D}_{core} = \mathcal{R}_{core} \times \mathcal{T}_{core} \subset \mathcal{M}$.}{Mission}{study-domain:core}
+
+\requirement{R11}{Global Study Domain Definition}{The Global Study Domain $\mathcal{D}_{global}$ shall be defined as the subset of $\mathcal{M}$ containing Earth's fire-prone regions, each characterized by specific temporal fire activity patterns. The domain shall encompass all surface patches with fire-prone climatological characteristics.}{Mission}{study-domain:global}
+
+\requirement{R12}{Portugal Region Target Definition}{The spatial region of Mainland Portugal shall be modeled as a Region Target $\mathcal{R}_{pt}$, with boundary $\partial \mathcal{R}_{pt}$ established using standard geospatial vector data formats (ESRI Shapefiles or GeoJSON) in the WGS84 Coordinate Reference System (EPSG:4326).}{Mission}{spatial:portugal-boundary}
+
+\requirement{R13}{Primary Revisit Point Target}{The city of Coimbra shall be designated as the primary point target $P_{revisit}$ for constellation revisit optimization within the core study domain $\mathcal{D}_{core}$, satisfying $P_{revisit} = P_{Coimbra}$. This selection is based on its central location within Portugal and proximity to fire-prone regions.}{Mission}{spatial:primary-target}
+
+\requirement{R14}{Portuguese Point Targets for Verification}{The mission simulation shall verify constellation performance over a fixed set of Portuguese point targets $\mathcal{P}_{pt,i}(\phi, \lambda, h)$ within the core study area, as defined in Table~\ref{tab:pt_coords}. These points shall serve as discrete verification locations for revisit time and coverage analysis.}{Verification}{spatial:verification-points}
+
+\requirement{R15}{Core Temporal Boundaries}{The core temporal domain $\mathcal{T}_{core}$ shall be defined as the full calendar year 2024, formally expressed as the continuous interval $\mathcal{T}_{core} = [t_{start_{2024}}, t_{end_{2024}}]$, where $t_{start_{2024}}$ corresponds to 2024-01-01 00:00:00 UTC and $t_{end_{2024}}$ corresponds to 2024-12-31 23:59:59 UTC.}{Mission}{temporal:core-bounds}
+
+\requirement{R16}{Peak Fire Reference Date}{The constellation shall be optimized for maximum coverage performance during Portugal's fire season, with August 18 (DOY 230) designated as the primary peak-reference date $t_{\text{peak fire ref}}$ for performance evaluation. This date corresponds to the strongest seasonal peak within the bimodal fire activity cycle. Additional temporal fire season markers are specified in Table~\ref{tab:pt_fire_season_bounds}.}{Performance}{temporal:peak-reference}
+
+
+\subsection{Global Study Domain Requirements}\label{subsec:app_req_global_domain}
+
+The following requirements extend the study domain to global fire-prone regions for generalized constellation performance assessment.
+
+\requirement{R17}{Global Spatial Domain Definition}{The global spatial region $\mathcal{R}_{global}$ shall be defined by phenomenological boundaries based on the probability of fire occurrence across different biomass and climate types, rather than static geopolitical borders. This region shall be designated as Earth's Fire-Prone Region Target $\mathcal{R}_{\oplus_{FPR}}$, mathematically expressed as the union of all disjoint surface patches $S_k$ with fire-prone characteristics.}{Mission}{spatial:global-fire-prone}
+
+\requirement{R18}{Global Target Fire-Climate Classes}{The generalized study domain $\mathcal{R}_{global}$ shall extend to all climate-type classes: Tropical-dry seadon, Arid-fuel limited, Temperate-dry season, Boreal-hot season; and fire frequency subclasses: Recurrent (r), Occasional (o), and Infrequent (i). The valid set of target classes shall be defined as $\mathcal{C}_{target} = \{ \text{Tr-ds}, \text{Ar-fl}, \text{Te-dhs}, \text{Bo-hs} \} \times \{ r, o, i \}$, enabling monitoring of both recurrent high-intensity fire regions and sensitive areas such as deforestation fronts and preservation areas.}{Mission}{spatial:fire-classes}
+
+\requirement{R19}{Global Temporal Boundaries}{The global temporal domain $\mathcal{T}_{global}$ shall be defined as the full calendar year 2024, formally expressed as $\mathcal{T}_{global} = [t_{start}^{2024}, t_{end}^{2024}]$, where $t_{start}^{2024}$ corresponds to 2024-01-01 00:00:00 UTC and $t_{end}^{2024}$ corresponds to 2024-12-31 23:59:59 UTC.}{Mission}{temporal:global-bounds}
+
+
+\subsection{Reference Fire Spots Data Requirements}\label{subsec:app_req_ref_data}
+
+The following requirements specify the characteristics of the reference active fire dataset used for constellation performance verification.
+
+\requirement{R20}{Reference Dataset Temporal Resolution}{The reference active fire dataset (FireDS) used for constellation verification shall have a temporal sampling interval $\Delta t_{FireDS}$ that satisfies the condition $\Delta t_{FireDS} \leq t_{revisit}$, where $t_{revisit}$ is the constellation revisit period ($\leq 30$ min per \reqRef{R7}). This ensures the reference dataset is sampled more finely than the constellation revisit target.}{Verification}{data:temporal-sampling}
+
+\requirement{R21}{GeoLayer Ground Truth Reference}{The FIRMS Geostationary Dataset (FIRMS$_{FireDS}$) shall serve as the high-frequency ground truth for LEO constellation performance validation. This multi-satellite geostationary constellation layer (GeoLayer) shall provide global coverage with temporal resolution $\Delta t_{FireDS} \approx 10$--$15$ minutes, capturing fire intensity evolution during active phases.}{Verification}{data:ground-truth}
+
+\requirement{R22}{GeoLayer Spatial Resolution Constraints}{The verification methodology shall account for the nominal spatial resolution of the GeoLayer reference data ($GSD_{GeoLayer} \approx 2$--$3$ km at nadir). The design candidate satellite (sat) sensor swath shall satisfy $\text{Swath}_{sat} \gg GSD_{GeoLayer}$ to ensure fire events remain within the observational footprint despite geostationary pixel uncertainty.}{Constraint}{data:spatial-resolution}
+
+
+\subsection{Architecture Requirements}\label{subsec:app_req_arch}
+
+The following requirements specify architectural constraints derived from the study domain analysis.
+
+\requirement{R23}{Tip-and-Cue Architecture Compatibility}{The constellation architecture shall support integration with the existing GeoLayer infrastructure via a ``Tip-and-Cue'' strategy, wherein coarse, rapid fire alerts from geostationary sensors trigger high-resolution imaging by the LEO constellation layer (LeoLayer). This cooperative multi-sensor approach shall enable simultaneous satisfaction of rapid global revisit ($t_{revisit} \approx 30$ min; \reqRef{R7}) and high spatial detail ($GSD \approx 6$ m; \reqRef{R8}) requirements.}{Architecture}{architecture:tip-and-cue}
+
+\requirement{R24}{GeoLayer Baseline Component Selection}{The geostationary satellite constellation comprising the FIRMS fire-alert network (GOES-16, GOES-18, Meteosat-9/11, Himawari-8/9) shall be designated as the baseline GeoLayer architectural component. These platforms shall provide the global observational infrastructure required to implement the Tip-and-Cue strategy defined in \reqRef{R23}.}{Architecture}{architecture:geolayer-baseline}
+
+\requirement{R25}{European Next-Generation GeoLayer Candidate}{The Meteosat Third Generation Imager platforms (Meteosat-12/MTG-I1 and Meteosat-14/MTG-I2) shall be identified as the primary candidates for the enhanced GeoLayer component over the European sector. These platforms shall be utilized to leverage higher spatial resolution (0.5--2 km) and rapid scan capabilities (2.5 min revisit) for regional performance optimization.}{Architecture}{architecture:geolayer-nextgen}
+
+
+\section{Fire Observation Requirements (Chapter 3)}\label{sec:app_req_ch3}
+
+
+\subsection{Fire Characterization Requirements}\label{subsec:app_req_fire_char}
+
+The following requirements define the radiometric metric and classification thresholds adopted for fire detection and validation against the FIRMS reference dataset.
+
+\requirement{R26}{Fire Radiative Power as Fundamental Metric}{The constellation design study shall adopt Fire Radiative Power (FRP), measured in MegaWatts [MW], as the fundamental metric for fire characterization. FRP quantifies the rate of radiant energy release and provides a direct link to biomass combustion rate, enabling quantitative performance evaluation against the FIRMS geostationary fire records.}{Mission}{fire:frp-metric}
+
+\requirement{R27}{Minimum FRP and Confidence Thresholds}{The reference validation dataset shall be filtered to include only fire detections satisfying $FRP_{min} = 50\,\mathrm{MW}$ and a FIRMS Confidence Level of 100\%. This dual threshold eliminates false positives arising from sun glint, weak thermal anomalies, and ambiguous sub-pixel signals, thereby ensuring that only high-confidence, physically significant fire events are retained for constellation performance assessment.}{Verification}{fire:frp-confidence-threshold}
+
+\requirement{R28}{Standard FRP-Based Detection Assumption}{The constellation simulation shall assume standard fire detection capabilities based on the MIR radiance FRP retrieval principles derived in Section~\ref{311-the-spectral-signature-of-fire}. Detailed instrument spectral optimization and multispectral payload design are deferred to future research. This assumption is valid for the core study domain, where fire seasons predominantly occur under hot, cloud-free atmospheric conditions.}{Constraint}{fire:detection-assumption}
+
+
+\subsection{Sensor Observation Geometry Requirements}\label{subsec:app_req_sensor_geom}
+
+The following requirements specify the angular constraints that define the valid observation volume for each satellite--target link, derived from atmospheric attenuation physics and sensor geometric limits.
+
+\requirement{R29}{Minimum Elevation Angle}{The minimum elevation angle for valid fire observation shall be $\varepsilon_{min} = 15^{\circ}$, measured from the local horizon of the ground target $P_j$ to the satellite line-of-sight vector. Observations below this threshold are rejected as the atmospheric path length ($\propto 1/\sin\varepsilon$) induces excessive signal attenuation due to molecular absorption, aerosol scattering, and smoke opacity.}{Constraint}{observation:min-elevation}
+
+\requirement{R30}{Maximum Atmospheric Grazing Angle}{The maximum atmospheric grazing angle shall be $\theta_{\text{atm max}} = 65^{\circ}$, measured from the satellite toward the ground target. This constraint serves as a complementary angular limit to $\varepsilon_{min}$, acting as a proxy for acceptable atmospheric transmittance without requiring real-time radiative transfer computation.}{Constraint}{observation:max-grazing-angle}
+
+\requirement{R31}{Maximum Off-Nadir Angle}{The maximum off-nadir angle for each spacecraft sensor shall be $\eta_{max} = \theta_{\text{atm max}} \approx 65^{\circ}$, measured from the sensor boresight vector $\hat{\mathbf{b}}_k$ (nominally nadir-pointing) to the satellite--target relative position vector $\vec{\rho}_{j,k}$. This defines the conical boundary of the Space Access Window $\mathcal{W}_{space}$.}{Constraint}{observation:max-off-nadir}
+
+\requirement{R32}{Maximum Full Field of View}{The maximum Full Field of View (FOV) for each satellite sensor shall be $FOV = 2\,\eta_{max} = 130^{\circ}$. This cone encloses all potential instrument architectures (push-broom scanners, matrix cameras) and defines the outermost extent of the Space Access Window for coverage computation for one sat.}{Constraint}{observation:full-fov}
+
+\requirement{R33}{Observation Link Visibility Condition}{A fire event at ground target $P_j$ shall be considered observable by spacecraft $S_k$ if and only if the observation link $\mathcal{L}_{j,k}$ satisfies both angular constraints simultaneously: the ground access constraint ($\varepsilon \geq \varepsilon_{min} = 15^{\circ}$) and the space access constraint ($\eta \leq \eta_{max} = 65^{\circ}$). The valid detection volume is the geometric intersection of the Ground Access Window $\mathcal{W}_{ground,j}$ and the Space Access Window $\mathcal{W}_{space,k}$.}{Constraint}{observation:visibility-condition}
+
+
+\subsection{Optical Quality Requirements}\label{subsec:app_req_opt_qual}
+
+The following requirement specifies the spatial resolution model adopted for constellation performance assessment.
+
+\requirement{R34}{Nadir GSD Paraxial Approximation}{The Ground Sample Distance (GSD) for each satellite shall be computed using the first-order paraxial approximation at nadir: $\mathrm{GSD}(t) \approx p \cdot h(t) / f$, where $p$ is the detector pixel pitch, $h(t)$ is the instantaneous satellite altitude, and $f$ is the effective focal length. This linear model represents the best-case spatial resolution and does not account for off-nadir distortion, optical aberrations, or motion smear.}{Constraint}{optical:nadir-gsd}
+
+
+\subsection{Fire Temporal Observation Requirements}\label{subsec:app_req_temp_obs}
+
+The following requirement establishes the diurnal temporal synchronization reference for constellation orbit design.
+
+\requirement{R35}{Peak Fire Reference Hour}{The constellation orbit shall be synchronized to intercept the estimated maximum FRP peak over the core study domain, defined as $t_{\text{peak fire ref hour}} = 15{:}00$ Local Time at Coimbra. This temporal anchor complements the peak fire reference date $t_{\text{peak fire ref}}$ (August~18; \reqRef{R16}).}{Performance}{temporal:peak-fire-hour}
+
+\chapter{The Proposed System Concept Requirements}
+\label{app:system_concept_requirements}
+
+This appendix section consolidates the additional system-level requirements derived from the Chapter~9 performance analysis and the proposed layered architecture.
+
+
+\subsection{Layered Architecture and Sensor Capability Requirements}
+\label{subsec:app_req_system_concept}
+
+The following requirements formalize the architectural implications of the Zoom-layer performance analysis and the proposed Watcher--Zoom concept.
+
+\requirement{R36}{Preferred Inter-Layer Relay Latitude Band}{The proposed communication relay layer $\mathcal{C}_{\text{Comm}}$, if implemented, shall prioritize coverage and message-transfer opportunities over the latitude band $\phi \approx \pm\,30^{\circ}$, where the $\mathcal{C}_{\text{Zoom}}$ constellation exhibits maximum pass density and peak temporal coverage. This band shall be treated as the preferred geometric intercept region for relaying cueing information between the geostationary Watcher fire-detection layer and the Zoom layer, thereby improving the probability of timely tasking before closure of the observation-link window.}{Architecture}{architecture:comm-relay-latitude}
+
+
+
+

@@ -1,0 +1,24 @@
+% Typography
+\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\familydefault}{\rmdefault}
+
+% Quotation support for biblatex with babel/polyglossia
+\usepackage{csquotes}
+
+% Keep each footnote on a single page (avoid splitting across pages)
+% 10000 = prohibit page breaks within footnotes
+\interfootnotelinepenalty=10000
+
+% Map problematic Unicode punctuation to TeX-safe equivalents
+\usepackage{newunicodechar}
+\newunicodechar{’}{'}
+
+% Ensure Unicode OpenType fonts with LuaLaTeX
+\usepackage{iftex}
+\ifLuaTeX
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+  \setmainfont{Latin Modern Roman}
+  \setsansfont{Latin Modern Sans}
+  \setmonofont{Latin Modern Mono}
+\fi

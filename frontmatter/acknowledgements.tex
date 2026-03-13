@@ -1,0 +1,42 @@
+% ------------------------------------------------------------------
+% Agradecimentos / Acknowledgements
+% ------------------------------------------------------------------
+
+% §1 — Financiamento e Apoio Institucional
+% Este trabalho foi parcialmente financiado pela Fundação para a Ciência e a Tecnologia (FCT), I.P., e desenvolvido no Departamento de Física da Universidade de Coimbra.
+
+% §1b — Arco pessoal
+Este trabalho nasce de um percurso que começou quando, adolescente no Brasil, vi os planetas com um telescopio que contrui com minhas proprias mãos --- decidi tornar-me físico--- comecei os estudos na UFMG em 2010, passei por Coimbra em 2011, e na Alemanha em 2014 me especializei em ótica de precisão, trabalhei com sistemas que vão desde de detectores de doença de Alzheimer até óptica e para calibração de satélites (Sentinel 5), o que me trouxe de volta a Coimbra, mais de uma década depois, para concluir o mestrado em Astrofísica e Instrumentação para o Espaço (MAIE), que vi nos inicios em 2011. Ao longo desse trajeto, testemunhei a gravidade crescente dos incêndios florestais tanto no Brasil como em Portugal, e escolhi dedicar esta tese a um problema que une os dois países onde construí a minha vida e também o planeta que admiro. A todos os que fizeram parte deste caminho---e que me permitiram passar de quem observa outros planetas a quem é capaz conceber missões para observar e proteger a Terra---o meu mais sincero agradecimento.
+
+% §2 — Orientadores
+Entre todos, são devidos reconhecimentos especiais aos meus orientadores, cujo acompanhamento científico, exigência intelectual e disponibilidade constante foram determinantes para a realização deste trabalho.
+
+Ao Professor Doutor Rui Miguel Curado da Silva, cuja orientação e experiência em sistemas espaciais permitiram transformar uma ideia inicial---``Portugal enfrenta incêndios; como pode a instrumentação para o espaço ajudar?''---numa missão estruturada, ligada a grupos de combate a incêndios (ADAI) e a projetos de CubeSat de deteção de incêndio (FADO\footnote{F.A.D.O -- Fire Analysis \& Development Observatory, Concept Report CubeSat 2024, Equipa CSP-7-FADO.}), nos quais participei e agradeço aos colegas pelo aprendizado partilhado. Os seus ensinamentos na cadeira de instrumentação espacial foram fundamentais para construir o conhecimento necessário ao início deste trabalho, e a sua capacidade de conectar pessoas e instituições no ecossistema espacial português foi determinante para traçar os caminhos desta tese e as direções futuras do desenvolvimento de sensores para deteção de incêndio.
+
+Ao Professor Doutor Carlos Xavier Paes Lidas, cuja experiência em gestão e tecnologias de combate de incêndios---nomeadamente modelagem de espalhamento de fogo e utilização de imagens de satélite pelas autoridades de combate em Portugal---foi fundamental para definir o que a missão teria de cumprir no contexto da deteção de fogos em Portugal. Foi também ele que me pôs em contacto com o Professor Doutor João Luís Ruivo Carvalho Paulo e o trabalho em deteção de incêndio baseada em inteligência artificial no projeto FireSys.
+
+Ao Professor Doutor Alan Kardec de Almeida Júnior, cujos conhecimentos em mecânica orbital foram essenciais para avançar dos requisitos básicos da missão até modelos de alta fidelidade. Foi ele quem me ensinou a utilizar o GMAT, ferramenta de análise de missão construída em agências como a NASA, e que me transmitiu os fundamentos de mecânica celeste, forças de perturbação, arrasto atmosférico, estabilidade orbital, manutenção de órbita e as ferramentas de simulação necessárias---alicerces que constituem a infraestrutura de simulação aqui apresentada. Agradeço-lhe igualmente pela orientação cuidadosa na redação e revisão deste trabalho.
+
+A todos os três, o meu mais sincero agradecimento pelo apoio, encorajamento e confiança ao longo desta jornada.
+
+% §3 — Colaboradores do Projeto
+Agradeço igualmente ao Professor Doutor João Luís Ruivo Carvalho Paulo pela oportunidade de trabalhar no projeto FireSys\footnote{This work was partially supported by the project FireSys -- ``Intelligent Decision Support System for Management of Wildfires'' with reference of operation 21378, operation code COMPETE2030-FEDER-02230700 on Balcão dos Fundos, funded by the Fundo Europeu de Desenvolvimento Regional (FEDER), through the Innovation and Digital Transition Program (COMPETE 2030) of Portugal 2030.} de deteção de incêndio em imagens de satélite utilizando AI. Desse projeto surgiu o conceito \emph{Watcher--Zoom} apresentado neste trabalho.
+Agradeço aos colegas PhD\,(c) Dina Jahanianfard, que partilhou ensinamentos valiosos sobre processamento de imagens de satélite relacionadas ao Sentinel-2 e à demonstração do conceito \emph{Watcher--Zoom}, e PhD\,(c) Matheus Fernandes Kovaleski, que colaborou no desenvolvimento do código.
+Agradeço ao Dr.\ Timothée Vaillant pelas sugestões para a apresentação da defesa.
+Quero também agradecer aos coordenadores do MAIE, à Prof.\ Dr.\ Margarida Maria Lopes da Silva Camarinha: o fundamento e formalismo matemático presentes neste trabalho foram derivados dos seus ensinamentos na cadeira de Mecânica Celeste, e também ao Prof.\ Dr.\ Alexandre C. M. Correia pelo apoio ao navegar nas decisões ajudaram a definir o tema durante o mestrado e na conclusão desse trabalho.
+
+% §4 — Formação Científica e Profissional
+É também importante reconhecer as experiências que construíram os alicerces deste trabalho antes de chegar em Coimbra. Ao Professor Dr.\ Ado Jório Vasconcelos e aos colegas do LabNS, pela formação científica em ótica que constitui a minha base técnica, e por terem acreditado em mim no início da carreira. Aos colegas da LusoSpace, por me terem mostrado, na prática, como se constroem sistemas para o espaço, e ao Dr.\ Luiz Etrusco e colegas da InventVision, pelo apoio durante os estudos e no desenvolvimento de cameras avançadas.
+
+% §5 — Colegas e Amigos
+Quero agradecer a todos os amigos e colegas que estiveram comigo na Universidade de Coimbra ou que fizeram parte deste caminho até à conclusão do mestrado, e que nos momentos certos me ajudaram a relaxar, a desfrutar da natureza e a refletir sobre as ideias.
+À Flávia Amaral, amiga astrofísica que acompanha este trajeto desde 2010 na UFMG.
+Aos amigos do mestrado---Pedro Pessoa, Cláudia, Letícia, Snock, Aline, Guilherme, Carlos, João Werneck, Akel, Céci, Willian, Ronald, Rita, José Rodrigues, Fred, Maria João, Ricardo, Mariana Encarnação, Inês de Castro, Maria Campino, Fernanda, Joana, Cátia, Hortence, Diogo, Marcos, Angela e Rubens Silva.
+Um agradecimento especial à Lara e à Fig, por me terem mostrado que as capacidades técnicas em instrumentação ótica, combinadas com sistemas espaciais, poderiam ter um impacto real nos problemas climáticos---revelando um caminho profissional significativo, com consequências na vida de muitas pessoas e seres neste planeta, e influenciando a escolha do tema desta tese.
+
+% §6 — Família
+Finalmente, quero expressar a minha mais profunda gratidão à minha família.
+Ao meu pai Joel e à minha mãe Marisa, que me apoiaram incondicionalmente em cada etapa---desde a educação que me proporcionaram no Brasil até à decisão de estudar no estrangeiro---e que, mesmo à distância, nunca deixaram de estar presentes.
+Às minhas irmãs Sabrina, Mariana e Marina, pelo encorajamento constante e por me lembrarem sempre do que importa.
+A todos os membros da família que contribuíram, ao longo da vida, com apoio, ensinamentos e o exemplo de que o esforço sustentado e união é o caminho mais seguro para chegar longe.
+Este trabalho é também de vocês.

@@ -1,0 +1,35 @@
+% ------------------------------------------------------------------
+% Resumo – estrutura IMRAD (Português de Portugal)
+% ------------------------------------------------------------------
+
+% Contexto e Enquadramento
+O prolongamento das épocas de incêndio e as alterações na inflamabilidade da vegetação estão a impulsionar uma actividade de incêndio sem precedentes na Europa mediterrânica e noutras regiões do mundo propensas a incêndios.
+Portugal exemplifica esta tendência: os índices de tempo propício a incêndio têm aumentado progressivamente desde o final do século XX, e as projecções climáticas indicam que a classe de tempo de incêndio mais severa se expandirá para cobrir grande parte do território nacional a meados do século.
+A gestão eficaz de incêndios exige detecção rápida a escalas espaciais suficientemente finas para resolver frentes de fogo individuais; contudo, nenhum sistema satelital actual ou planeado oferece simultaneamente revisita inferior a uma hora e resolução ao nível do metro nas regiões que mais necessitam.
+
+% Problema e Objectivo
+Os sensores geoestacionários cobrem áreas continentais a cada 10--15~minutos, mas resolvem apenas 2--3~km por pixel, enquanto as missões em órbita terrestre baixa alcançam resoluções inferiores a 30~m à custa de intervalos de revisita de vários dias.
+Esta lacuna de resolução--revisita--latência deixa os territórios propensos a incêndio sem informação espacial de alta resolução e em tempo útil.
+O presente trabalho questiona: \emph{Que constelação de satélites de observação de incêndios pode colmatar a lacuna espaço-temporal, alcançando uma revisita de aproximadamente 30~minutos e uma resolução ao nível dos 6~m sobre o território continental português?} Uma questão secundária é: \emph{Que cobertura oferece a constelação proposta nas regiões globais propensas a incêndio?}
+
+% Metodologia
+O estudo integra ciência de detecção remota de incêndios, mecânica orbital e simulação numérica de alta fidelidade.
+Definiu-se inicialmente um domínio de estudo central delimitado pelo território português de acordo com o seu padrão de época de incêndios; posteriormente, definiu-se um domínio de estudo global com base na severidade actual do tempo de incêndio seguindo a metodologia de Senande-Rivera et al., estabelecendo os requisitos geográficos, espaciais e temporais que a constelação deve satisfazer.
+Um levantamento analítico de órbitas de traço terrestre repetitivo (RGTOs), generalizado para latitudes-alvo arbitrárias, produziu uma família de modos RGTO para revisita diária no território continental português; deste conjunto de geometrias orbitais, o rácio $\tau = 15/1$ a aproximadamente 488~km de altitude e inclinação ${\sim}\,40{,}2°$ foi seleccionado como o mais adequado à latitude-alvo do domínio de estudo central de Portugal, uma órbita ressonante em torno da cidade de Coimbra, proporcionando a revisita mais rápida possível.
+Este modo orbital seleccionado foi integrado numa arquitectura de constelação Walker. Estudos paramétricos exploraram o número de planos orbitais, satélites por plano e ângulo máximo de apontamento fora do nadir do sensor numa estrutura Walker-delta, permitindo optimizar a revisita sobre o domínio de estudo central português.
+As constelações candidatas foram propagadas com a ferramenta de alta fidelidade General Mission Analysis Tool (GMAT) --- com geopotencial $8\times8$, perturbações luni-solares e arrastamento atmosférico --- validando a estabilidade orbital, o padrão de ligação observacional, a cobertura temporal, as estatísticas de revisita e a distância de amostragem ao nível do solo tanto sobre o domínio central português como sobre o domínio global propenso a incêndio.
+
+% Resultados Principais
+A constelação seleccionada --- designada $C_{\text{Zoom}} = C_{15/5/72}$, composta por 15~satélites em 5~planos orbitais equiespaçados desfasados de $72°$ em ascensão recta, com 3~satélites por plano distribuídos por desvios de $120°$ em anomalia verdadeira --- alcança uma revisita média de aproximadamente 21~minutos sobre Portugal com resolução ao nível do solo inferior a 6~m por pixel.
+O design de traço terrestre repetitivo proporciona cerca de $1{,}75\times$ mais tempo diário de cobertura do que uma órbita heliosíncrona polar convencional a altitude comparável, reduzindo efectivamente para metade o número de satélites que de outro modo seria necessário.
+Uma análise de sensibilidade confirma que um limite de 65° fora do nadir é essencial: reduzi-lo para cobrir apenas Portugal a 30°, mantendo a mesma cadência, quase duplica a frota necessária para 27~satélites, sublinhando o apontamento de grande ângulo como um factor de projecto determinante para manter a constelação compacta.
+Concebida para Portugal, a cobertura estende-se naturalmente a todas as principais regiões propensas a incêndio, com excepção da região boreal: o cinturão temperado --- Califórnia, a bacia mediterrânica alargada, o sul de África e o sudeste da Austrália --- recebe 6--7~horas de observação diária com intervalos máximos de revisita de cerca de 30~minutos, enquanto regiões tropicais como a Amazónia, a África central e o sudeste asiático retêm pelo menos 3,5~horas por dia com uma revisita média de 40 a 50~minutos.
+Para expandir o campo de visão reduzido que a resolução ao nível do metro exige numa plataforma de pequena dimensão, propõe-se uma arquitectura \emph{Watcher--Zoom} de indicação e sequenciação: cinco satélites geoestacionários existentes de detecção de incêndios fornecem alertas grosseiros a cada 10--15~minutos, indicando ao satélite em órbita baixa mais próximo que direccione o seu sensor para o ponto de fogo e adquira imagens de alta resolução.
+
+% Conclusão
+Nenhuma constelação de detecção de incêndio analisada neste trabalho combina revisita inferior a 30~minutos com resolução espacial ao nível do metro em qualquer uma das regiões globais propensas a incêndio examinadas --- com exceção de regiões boreais.
+A arquitectura aqui proposta --- quinze satélites em órbita ressonante, guiados por activos geoestacionários de vigilância de incêndio já estabelecidos --- diminui esta lacuna espaço-temporal para Portugal e, pela mesma geometria orbital e do sensor, estende uma cobertura significativa a todas as principais regiões propensas a incêndio na Terra, transformando uma missão nacional numa plataforma global de observação cooperativa.
+
+
+\vspace{1em}
+\noindent\textbf{Palavras-chave:} constelação de satélites, detecção de incêndios, órbita de traço terrestre repetitivo, projecto de missão, detecção de incêndios, Portugal, observação da Terra

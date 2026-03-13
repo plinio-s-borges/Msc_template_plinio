@@ -1,0 +1,104 @@
+% Packages
+% \usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage[portuguese,english]{babel}
+\usepackage[dvipsnames,table]{xcolor}
+
+\usepackage{textcomp}
+\usepackage{graphicx}
+\graphicspath{images/}
+\usepackage{titlesec}
+
+\usepackage[nottoc]{tocbibind}
+\usepackage{multirow, makecell, pifont, rotating}
+\usepackage[section]{placeins}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+\usepackage{url}
+\usepackage{epigraph}
+\usepackage{etoolbox}
+\usepackage{float}
+\usepackage{arydshln}
+\usepackage{tikz,lipsum,lmodern}
+\usepackage[most]{tcolorbox}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{acronym}
+% todonotes removed — uses TikZ, breaks inside floats/captions
+% Replaced by fixme (loaded after hyperref for hyperlink support)
+%\usepackage{markdown}
+%\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}  % compact list options: nosep, noitemsep, topsep, itemsep
+\usepackage{tablefootnote}
+\usepackage{amssymb}
+\usepackage{wasysym} % Provides \ocircle
+%\usepackage{natbib}
+
+
+% Footnotes: ensure they are always placed at the bottom of the page (not just after main text)
+% - 'bottom' option pushes footnotes to the bottom vertical position
+% - 'hang' gives a hanging indentation for multi-line footnotes (optional aesthetic)
+% - 'flushmargin' removes indentation (comment out if hanging indent preferred)
+% Only load if not already loaded elsewhere
+\usepackage[bottom,hang]{footmisc}
+% If you prefer no indent instead of hanging style, replace previous line with:
+% \usepackage[bottom,flushmargin]{footmisc}
+% Tighten spacing a little (optional)
+\setlength{\footnotesep}{0.6\baselineskip}
+% Ensure separation rule is modest
+\setlength{\skip\footins}{12pt plus 2pt minus 4pt}
+\renewcommand{\footnoterule}{\vspace*{-4pt}\hrule width 0.4\columnwidth height 0.4pt \vspace*{6pt}}
+
+% Keep hyperref as the last package
+\usepackage[
+  colorlinks=true,
+  urlcolor=black,
+  menucolor=black,
+  linkcolor=black,
+  citecolor=black,
+  bookmarks=true,
+  bookmarksopen=true,
+  bookmarksnumbered=true,
+  hyperfootnotes=true,
+  pdfpagemode=UseOutlines,
+  plainpages=false,
+  pdfpagelabels
+]{hyperref}
+
+% Bibliography (biblatex + biber for UTF-8 .bib)
+\usepackage[backend=biber,style=ieee,doi=true,url=true]{biblatex}
+
+% fixme — draft annotations (works inside floats/captions, no TikZ)
+% Commands: \fxnote{}, \fxwarning{}, \fxerror{}, \fxfatal{}
+% Summary:  \listoffixmes
+% Switch status=final to hide all annotations before submission
+\usepackage[
+  status=draft,
+  layout=inline
+]{fixme}
+\fxusetheme{color}
+
+
+% Map common Unicode symbols to math equivalents (LuaLaTeX-safe)
+% Patch for biblatex 'volume+number' macro (fixes warning)
+\providebibmacro{volume+number}{%
+  \printfield{volume}%
+  \printfield{number}%
+}
+\usepackage{newunicodechar}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{µ}{\ensuremath{\mu}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{°}{\ensuremath{^\circ}}
+

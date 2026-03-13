@@ -1,0 +1,17 @@
+% Layout and geometry tweaks
+\usepackage[left=3cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry} %page layour
+\setlength{\marginparwidth}{2cm} % for todonotes
+
+% Reduce large vertical gaps from page stretching:
+\raggedbottom
+% Let all tcolorbox instances in this chapter break across pages and use soft skips:
+\tcbset{before skip=6pt plus 2pt minus 1pt, after skip=12pt plus 2pt minus 2pt}
+
+% Table cells and marks
+\renewcommand\cellalign{lc}
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\cmark}{\ding{51}}%
+
+
+% Colors
+\colorlet{shadecolor}{lightgray}

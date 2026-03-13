@@ -1,0 +1,94 @@
+\chapter{Discussion}\label{chapter-10-discussion}
+
+This chapter interprets the results presented in and Chapters~\ref{73-constellation-architectures-design} and Chapters~\ref{chapter-9-the-proposed-system-concept}, connects them to the research questions posed in Chapters~\ref{chap:partI_intro_back}. The discussion is organised into three sections: analysis of the proposed solution and its contributions, system feasibility and open challenges, and limitations of the present study.
+
+%------------------------------------------------------------------
+\section{Analysis of the Proposed Solution}\label{sec:discussion-analysis}
+%------------------------------------------------------------------
+
+The central research question of this thesis asked: \emph{what satellite constellation design can close the spatiotemporal gap achieving roughly 30-minute revisit and approximately 6~m ground resolution over continental Portugal providing orbital fire observation, improving fire-weather and fire-spread prediction for Portugal?} A secondary question is: \emph{What coverage reach the proposed constellation provide over global fire-prone regions?} Three contributions answer this question.
+
+\subsection{Contribution~1: RGTO-Based Fire Detection Constellation Tuned for Portugal}
+
+The first contribution is the design of $\mathcal{C}_{\text{Zoom}} = \mathcal{C}_{15/5/72}$: a 15-satellite Walker Repeating Ground-Track Orbit (RGTO) constellation whose inclination ($i = 40.20^{\circ}$) matches the latitude of continental Portugal, creating a resonant daily revisit pattern. The constellation geometry is shown in Fig.~\ref{fig:GaiaFireeyes_Constellation3}, with the orbital seed elements defined in Eq.~\ref{eq:RGTO_2_coimbra} and their resulting maps, revisit patterns, and observation links in Figs.~\ref{fig:RGTO_maps_Coimbra_One_day}, \ref{fig:RGTO_metrics_Coimbra_One_day}, \ref{fig:RGTO_metrics_Coimbra_Seven_days}, \ref{fig:temporal_res_P1S1}, \ref{fig:obs_links_5planes}; the Walker architecture is detailed in Tables~\ref{tab:walker_c15}, \ref{tab:Czoom_eta_configurations}, and~\ref{tab:rgto_family_coimbra}. Following the results metrics over Portugal's core domain~$\mathcal{D}_{\mathrm{core}}$ described in section \ref{sec:portugal_core_domain_metrics_derive_from_global_domain_results}, the constellation delivers $\approx 6$\,h\,day$^{-1}$ of temporal coverage, an average revisit of $\approx 21$\,min (worst-case $\approx 35$\,min, best-case $\approx 12$\,min), and GSD~$< 6$\,m\,px$^{-1}$---satisfying mission requirements R7 and R8. The resonance mode $\tau = 15/1$ at $h \approx 488$\,km yields four daily passes per satellite: two near nadir (elevation ${>}\,75^{\circ}$, best image resolution) and two at lower elevations (${>}\,30^{\circ}$). Benchmarked against the typical SpaceX Transporter rideshare SSO (Appendix~\ref{app:sso_orbit}), the RGTO delivers $\approx 1.75\times$ the daily coverage rate  (Figs.~\ref{fig:rgtoVSsso_7day_prop_maps}--\ref{fig:rgtoVSsso_7day_prop_old}). An SSO-based constellation would therefore require roughly twice as many satellites to achieve equivalent temporal coverage of the proposed RGTO-based architecture. To our knowledge, this is the first RGTO constellation specifically designed for Portuguese monitoring.
+
+\subsubsection{RGTO Resonance Family and Multi-Layer Potential}
+
+Beyond the selected $\tau = 15/1$ mode, the resonance analysis produced as contribution a family of RGTO modes for Portugal (Table~\ref{tab:rgto_family_coimbra}), spanning low earth orbit bands ($\sim\!488$\,km) to MEO ($\sim\!1623$\,km), but it grows farther than this modes. This family is generalized to the full inclination range $i \in [0^{\circ},\,90^{\circ}]$ in Fig.~\ref{fig:RGTO_1day_resonance}, making the resonance curves applicable to any target latitude worldwide. The existence of multiple co-resonant altitudes above the same target enables multi-layer architectures in which satellites at different altitudes share the same ground-track repeat period, producing synchronised passes over a common region---for example, pairing a high-resolution imaging layer with a broader-swath monitoring or data-relay layer, both revisiting Portugal on a coordinated daily schedule.
+
+\subsection{Contribution~2: Watcher-Zoom Two-Layer Architecture}
+
+The second contribution is the \emph{Watcher-Zoom} (tip-and-cue) architecture proposed in section~\ref{sec:proposed_architecture}. No prior constellation design, to our knowledge, combines existing geostationary fire-watch assets (GOES, Meteosat, Himawari---the ``Watcher'' layer, $\mathcal{C}_{\text{Watcher}}$) with a dedicated agile LEO constellation (the ``Zoom'' layer, $\mathcal{C}_{\text{Zoom}}$) for high-resolution follow-up imaging of detected fire events.
+
+This architecture exploits an important asymmetry: the GEO layer already provides near-global, continuous monitoring with temporal resolution trending toward sub 10 minutes cadence, but at coarse spatial resolution ($\sim$0.5--3~km), as shown insection \ref{sec:geolayer_new_gen}. Rather than duplicating wide-area surveillance in LEO, the Zoom layer receives tip-off cues from the Watcher layer and performs rapid, narrow-field-of-view pointing toward confirmed hotspot locations. This separation of roles reduces the optical and data requirements on the LEO segment. In principle, each Zoom satellite needs only to transmit fire-event data (detected/not-detected, geolocation, and a small image patch) rather than full-swath imagery, enabling lightweight communication links and a spacecraft with less energy and computational demands.
+
+The Zoom layer concept aligns with the current trend toward CubeSat-class agile imagers: small, rapidly slewing platforms equipped with narrow-FOV sensors and compact optical or radio terminals. As the GEO watcher instruments continue to improve in temporal and spatial resolution, the tip latency of the architecture decreases without any redesign of the LEO segment.
+
+\subsubsection{Initial Watcher-Zoom Demonstration and Data Backbone for Future Engineering Models}
+
+Using FIRMS as a proxy for $\mathcal{C}_{\text{Watcher}}$ and Sentinel-2 for $\mathcal{C}_{\text{Zoom}}$, a temporal-coincidence scan of the full year 2024 (Section~\ref{sec:coarse_fine_image_overlap_demonstration}) identified 3062~coarse-fine overlap events globally (Fig.~\ref{fig:active_fire_dataset_global_2024_FIRMS_Sentinel2}), including a wildfire near Viseu, Portugal (Fig.~\ref{fig:portugal_Viseu_2024-08-16_fire_Watcher_Firms_Zoom_S2_fire_pixels}) and a $\sim\!37$\,km fire front in Australia (Fig.~\ref{fig:australia_fire_2024-04-17_big}), confirming that a coarse Watcher alert reliably flags the region where a high-resolution LEO sensor observes active fire.  That only one Portuguese fire event appears among 3062~global matches from a full year underscores the limitation of Sentinel-2's five-day revisit; a dedicated sub-30-minute constellation would increase the yield of actionable high-resolution fire observations by orders of magnitude.  The demonstration infrastructure---FIRMS fire timelines, Sentinel-2 spectral/spatial fire scenes, and the $\mathcal{C}_{\text{Zoom}}$ orbital simulation (Chapter~\ref{73-constellation-architectures-design})---together form the data backbone from which future engineering models can be derived, enabling sensor requirements, pointing-agility constraints, and field-of-view budgets to be traded against real observational data rather than synthetic assumptions.
+
+%%% ----------------------------------------------------------------
+%%% Contribution 3
+%%% ----------------------------------------------------------------
+\subsection{Contribution~3: Constellation Coverage of Global Fire-Prone Regions}
+
+The third contribution is a constellation that cover global fire prone regions described in section \ref{sec:zoom_layer} and discussed here. The parametric analysis of the $\mathcal{C}_{\text{Zoom}}$ constellation against the sensor off-nadir angle~$\eta$ (Section~\ref{sec:zoom_layer}, Table~\ref{tab:zoom_layer_configurations}) shows that the minimum spacecraft count ($T = 15$) for a 30-min revisit over Portugal requires $\eta \approx 65^{\circ}$; restricting $\eta$ to $30^{\circ}$ nearly doubles the constellation ($T = 27$), and $\eta = 15^{\circ}$ triples it ($T = 42$).  From this single design choice---optimising for $\mathcal{D}_{\mathrm{core}}$ at the minimum viable size---the coverage footprint extends naturally to the global fire-prone domain~$\mathcal{D}_{\mathrm{global}}$.
+
+A detailed analysis of the coverage metrics over $\mathcal{D}_{\mathrm{global}}$ quantifies this extension.  The temporal-coverage maps (Fig.~\ref{fig:c_zoom_global_Tcovera_eta63}), filtered through recurrent and occasional fire-prone region masks (Fig.~\ref{fig:c_zoom_global_Tcoverage_FRP_groups_Spatial_Mask}), yield the global fire-prone coverage map (Fig.~\ref{fig:c_zoom_global_FRP_recurrent_ocasional_Tcoverage_eta63}).  The temperate belt ($\phi \approx \pm\,30^{\circ}$--$45^{\circ}$)---southern Europe, the western United States, south-eastern Australia, southern South America, and southern Africa---receives $T_{\text{cov}} \approx 6$--$7$\,h\,day$^{-1}$; the equatorial belt---Amazonia, sub-Saharan Africa, and maritime South-East Asia---retains $T_{\text{cov}} \geq 3.5$\,h\,day$^{-1}$ (country-level enumeration in Section~\ref{sec:fpr_coverage_analysis}).  The constellation also sustains a high revisit cadence globally: across $\phi \approx \pm\,20^{\circ}$--$40^{\circ}$, the worst-case gap stays $\Delta t_{\max} \approx 30$\,min, with the best average revisit $\Delta t_{\text{avg}} \approx 21$\,min at Portugal $\phi \approx 40^{\circ}$\,N (Section~\ref{sec:portugal_core_domain_metrics_derive_from_global_domain_results}, Fig.~\ref{fig:c_zoom_metrics_latitude_profile_not_norm}).  At the equatorial fringe ($\phi \approx \pm\,15^{\circ}$), the gap widens to $\Delta t_{\max} \approx 115$\,min and $\Delta t_{\text{avg}} \approx 40 - 50$\,min (Fig.~\ref{fig:c_zoom_avg_revisit}), yet both values remain well below the revisit of current polar-orbiting fire-detection systems at comparable spatial resolution.
+
+This archicteture misses boreal fire active regions, but it can be complementary to high-latitude programmes---such as Canadian and Australian systems---that address biomes outside the RGTO inclination band, opening the prospect of an internationally coordinated fire-observation network.  The central conclusion of this contribution is that a constellation originally sized for Portuguese wildfire monitoring simultaneously services the majority of fire-prone nations worldwide, transforming a regional mission into a global one.
+
+%%% ----------------------------------------------------------------
+%%% Comparison with the State of the Art
+%%% ----------------------------------------------------------------
+\subsection{Comparison with the State of the Art}
+
+The gap analysis of Figure~\ref{fig:gap_satellite_constellations_spatial_temporal_plot} established that no operational or planned mission simultaneously provides sub-hour revisit and metre-class thermal resolution over any regional domain.  The proposed system closes this gap by combining three mutually reinforcing elements: an RGTO orbit that concentrates coverage on temperate fire-prone regions---primarily Portugal---with an average revisit of $\approx 21$\,min and roughly half the satellite count of an equivalent SSO design; a Watcher-Zoom architecture that leverages existing GEO fire-watch assets to dynamically aim to fire spots instead of duplicating wide-area surveillance in LEO; and their joint result---a natural extension to global fire-prone regions delivering $T_{\text{cov}} \approx 6$--$7$\,h\,day$^{-1}$ over the temperate belt and ${\geq}\,3.5$\,h\,day$^{-1}$ over equatorial fire zones, with sub-hour revisit cadence ($\sim\!30$\,min on average) across most covered latitudes.  No system in the current or planned inventory offers this combination from a single 15-satellite constellation, making the proposed architecture a step change relative to the state of the art.
+
+%------------------------------------------------------------------
+\section{System Feasibility and Challenges}\label{sec:discussion-feasibility}
+%------------------------------------------------------------------
+
+\subsection{Feasibility Factors}
+
+Several trends in the space industry support the practical viability of the proposed system:
+
+\begin{itemize}
+    \item \textbf{Launch access.} The baseline altitude of $\approx$488~km is well within the envelope of current rideshare services on reusable launchers, which have driven per-kilogram costs to historic lows. The RGTO, moderate-inclination orbit is also compatible with dedicated small-launcher providers.
+    \item \textbf{Platform maturity.} CubeSat and small-satellite buses with three-axis stabilisation, agile slew capability, and COTS thermal/optical sensors are emerging, reducing non-recurring engineering costs. Also reaching the $GSD~6m/px$ is possible in small sats .
+    \item \textbf{Existing infrastructure.} The Watcher layer relies entirely on operational GEO assets; no new geostationary satellites need to be launched. Active-fire products from GOES, Meteosat, and Himawari are freely available with latencies already in the minute-to-sub-minute range.
+    \item \textbf{Debris environment.} At 488~km, residual atmospheric drag ensures natural de-orbit within a few years even without active disposal, consistent with current space-debris mitigation guidelines and the emerging regulatory trend toward shorter orbital lifetimes.
+\end{itemize}
+
+\subsection{Open Challenges}
+
+Three principal challenges remain:
+
+\begin{enumerate}
+    \item \textbf{Inter-layer communication.} Connecting the Zoom layer to ground users  requires a data relay path. Options include direct ground-station contact during passes, or relay through a commercial LEO broadband constellation. Neither option was sized in this work; a link-budget analysis and latency assessment are necessary.
+    \item \textbf{Agile pointing mechanism.} The tip-and-cue concept demands rapid slew-and-settle performance of each Zoom satellite. Achieving sub-degree pointing accuracy within seconds on a CubeSat-class platform is feasible with current reaction-wheel and star-tracker technology, but detailed design and jitter analysis are required.
+    \item \textbf{Station-keeping.} The RGTO resonance condition drifts after approximately 30~days without orbit-maintenance manoeuvres (Chapter~\ref{app:station_keeping}). Maintaining the ground-track repeat pattern requires $\sim$4~burns per year, implying a propulsion subsystem whose mass and power budget were not traded in this study. Detailed study is need to further explore the impacts of orbital stability and station-keeping on the constellation design and operational concept.
+    \item  \textbf{Thermal Sensor in Small Spacecraft.} As the Fire Radiant Power is measure in the Middle Infrared (MIR) spectral range, the thermal sensor must be designed to operate in this range as required in Equation \ref{eq:frp_operational}. The design must consider factors such as thermal management, calibration, and sensitivity to ensure accurate fire detection and characterization which can be challenge in small volume satellites. 
+\end{enumerate}
+
+%------------------------------------------------------------------
+\section{Limitations of the Study}\label{sec:discussion-limitations}
+%------------------------------------------------------------------
+
+The scope of this work was deliberately bounded at the Pre-Phase~A / Phase~A level of the systems-engineering lifecycle. The following limitations should be considered when interpreting the results; they also define the starting points for future work (Chapter~\ref{chapter-11-conclusion-and-future-work}).
+
+\paragraph{Cluster~A: Sensor and Imaging Fidelity.}
+The analysis evaluated geometric observational access (the visibility cone between satellite and target) but did not simulate the imaging chain. No modulation-transfer-function (MTF), signal-to-noise-ratio (SNR), or motion-blur analysis was performed. The image quality at large off-nadir angles remains uncharacterised. Spectral-band selection and radiometric sensitivity were likewise not traded.
+
+\paragraph{Cluster~B: Operations and Communications.}
+No communications link budget, energy budget, or operational task-scheduling model was developed. The simulations quantify \emph{when} and \emph{where} an observation link is geometrically possible, but do not derive the full set of system requirements for an operational mission (e.g., data volume, onboard storage, duty cycling, or ground-segment capacity).
+
+\paragraph{Cluster~C: Orbital Maintenance, Manouvers and Propagation.}
+Station-keeping was analysed at the level of altitude-decay rate and burn frequency, but the propulsion subsystem was not sized. No conjunction-screening or collision-avoidance analysis was performed. The atmospheric-drag model used a simplified exponential atmosphere rather than a time-varying density model. The manoverus capability for the dynamical sensor required for the Watcher-Zoom architecture was not explored.
+
+\medskip
+
+\noindent Despite these limitations, the simulation framework---combining GMAT high-fidelity propagation ($c_{8,8}$ geopotential plus drag), satellite-derived fire-pixel datasets, and the observational-link geometry model---provides a reusable platform from which the above requirements can be iteratively derived in subsequent design phases.
+
+

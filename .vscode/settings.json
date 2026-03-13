@@ -1,0 +1,207 @@
+{
+    // LaTeX Workshop Configuration
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk-lualatex",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-f",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-shell-escape",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "makeindex",
+            "command": "makeindex",
+            "args": [
+                "%DOCFILE%.idx"
+            ],
+            "env": {}
+        },
+        {
+            "name": "makeglossaries",
+            "command": "makeglossaries",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        }
+    ],
+    
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "Overleaf Style (latexmk + lualatex)",
+            "tools": [
+                "latexmk-lualatex"
+            ]
+        },
+        {
+            "name": "LuaLaTeX + Biber (Recommended, builds bibliography)",
+            "tools": [
+                "lualatex",
+                "biber",
+                "lualatex",
+                "lualatex"
+            ]
+        },
+        {
+            "name": "PDFLaTeX + Biber",
+            "tools": [
+                "pdflatex",
+                "biber",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "LuaLaTeX Only (Quick Build, no bibliography)",
+            "tools": [
+                "lualatex"
+            ]
+        },
+        {
+            "name": "PDFLaTeX Only",
+            "tools": [
+                "pdflatex"
+            ]
+        }
+    ],
+    
+    // Set LuaLaTeX as default (recommended for Unicode support)
+    "latex-workshop.latex.recipe.default": "Overleaf Style (latexmk + lualatex)",
+    
+    // Auto-build settings
+    // onSave: rebuilds only on explicit save (Ctrl+S), not on every keystroke
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.autoBuild.interval": 1000,
+    "latex-workshop.latex.autoClean.run": "never",
+    
+    // Output and auxiliary files management
+    "latex-workshop.latex.outDir": "./",
+    "latex-workshop.latex.auxDir": "./",
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.fls",
+        "*.fdb_latexmk",
+        "*.synctex.gz",
+        "*.auxlock",
+        "*.figlist",
+        "*.makefile",
+        "*.run.xml",
+        "*.bcf"
+    ],
+    
+    // PDF viewer settings
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.zoom": "page-width",
+    // Prevent the PDF tab from stealing focus when it reloads after a build
+    "latex-workshop.view.pdf.tab.editorGroup": "right",
+    "latex-workshop.view.pdf.focus.onTriggerRefocus": false,
+    
+    // Syntax highlighting and IntelliSense
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.intellisense.unimathsymbols.enabled": true,
+    
+    // Paste image (Ctrl+Alt+V in a .tex file → saves PNG to images/ and inserts figure block)
+    "latex-workshop.latex.pasteImage.enabled": true,
+    //"latex-workshop.latex.pasteImage.imgDir": "${workspaceFolder}/images",
+    "latex-workshop.latex.pasteImage.template": "\\begin{figure}[H]\n    \\centering\n    \\includegraphics[width=1\\linewidth]{images/${imageFilePath}}\n    \\caption{Enter Caption}\n    \\label{fig:${imageFileNameWithoutExt}}\n\\end{figure}",
+
+    // latex-utilities Ctrl+Shift+V paste: save images to project root's images/ folder
+    "latex-utilities.formattedPaste.imagePathOverride": "C:\\Users\\AIfogo\\OneDrive\\Simulators\\ThesisDev\\images",
+
+    // Error handling
+    "latex-workshop.message.error.show": true,
+    "latex-workshop.message.warning.show": true,
+    
+    // SyncTeX settings for forward/inverse search
+    // false: PDF will NOT jump to cursor position after every build.
+    // Use Ctrl+Alt+J for on-demand forward search, Ctrl+Click in PDF for inverse search.
+    "latex-workshop.synctex.afterBuild.enabled": false,
+    
+    // Formatting settings
+    "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.formatting.bibtex": "bibtex-tidy",
+    
+    // File associations
+    "files.associations": {
+        "*.tex": "latex",
+        "*.bib": "bibtex",
+        "*.cls": "latex",
+        "*.sty": "latex"
+    },
+    
+    // Editor settings for LaTeX
+    "[latex]": {
+        "editor.wordWrap": "on",
+        "editor.wordWrapColumn": 80,
+        "editor.rulers": [80],
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+    },
+    
+    "[bibtex]": {
+        "editor.wordWrap": "on",
+        "editor.tabSize": 2
+    },
+    "spellright.language": [
+        "en",
+        "pt"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ]
+}
